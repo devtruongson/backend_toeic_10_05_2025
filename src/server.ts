@@ -6,6 +6,7 @@ import configCors from './configs/cors.config';
 import configRequest from './configs/req.config';
 import initialAuthRoute from './routes/auth.routes';
 import initialUploadRoute from './routes/upload.routes';
+import initialUserRoute from './routes/user.routes';
 
 const app: Application = express();
 const PORT: number = parseInt(process.env.PORT || '8080');
@@ -21,6 +22,7 @@ startAndConnectDB();
 // router
 initialUploadRoute(app);
 initialAuthRoute(app);
+initialUserRoute(app);
 
 app.listen(PORT, () => {
     console.log('App Start Successfully With Port: ' + PORT);

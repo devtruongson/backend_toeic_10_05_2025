@@ -10,7 +10,7 @@ export interface ExamAttributes {
     updatedAt?: Date;
 }
 
-export interface ExamInstance extends Model<ExamAttributes>, ExamAttributes {}
+export interface ExamInstance extends Model<ExamAttributes>, ExamAttributes { }
 
 export interface HistoryAttributes {
     id?: number;
@@ -22,7 +22,7 @@ export interface HistoryAttributes {
     created_at?: Date;
 }
 
-export interface HistoryInstance extends Model<HistoryAttributes>, HistoryAttributes {}
+export interface HistoryInstance extends Model<HistoryAttributes>, HistoryAttributes { }
 
 export interface QuestionAttributes {
     id?: number;
@@ -37,7 +37,7 @@ export interface QuestionAttributes {
     updatedAt?: Date;
 }
 
-export interface QuestionInstance extends Model<QuestionAttributes>, QuestionAttributes {}
+export interface QuestionInstance extends Model<QuestionAttributes>, QuestionAttributes { }
 
 export interface RoleAttributes {
     id?: number;
@@ -46,7 +46,7 @@ export interface RoleAttributes {
     updatedAt?: Date;
 }
 
-export interface RoleInstance extends Model<RoleAttributes>, RoleAttributes {}
+export interface RoleInstance extends Model<RoleAttributes>, RoleAttributes { }
 
 export interface UserAttributes {
     id?: number;
@@ -54,7 +54,6 @@ export interface UserAttributes {
     email: string;
     password: string;
     phone?: string;
-    name?: string;
     gender?: string;
     image?: string;
     uid?: string;
@@ -63,4 +62,4 @@ export interface UserAttributes {
     updatedAt?: Date;
 }
 
-export interface UserInstance extends Model<UserAttributes>, UserAttributes {}
+export interface UserInstance extends Model<UserAttributes>, UserAttributes { }
