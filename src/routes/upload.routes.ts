@@ -1,4 +1,5 @@
 import { HttpStatusCode } from 'axios';
+import 'dotenv/config';
 import { Application, Request, Response, Router } from 'express';
 import fs from 'fs';
 import path from 'path';
@@ -15,7 +16,11 @@ export default function initialUploadRoute(app: Application) {
             );
         } else {
             res.status(HttpStatusCode.Ok).json(
-                sendResponse(HttpStatusCode.Ok, 'Ok', `/api/v1/upload/file/${req.file.filename}`),
+                sendResponse(
+                    HttpStatusCode.Ok,
+                    'Ok',
+                    `http://localhost:${process.env.PORT}/api/v1/upload/file/${req.file.filename}`,
+                ),
             );
         }
     });

@@ -11,10 +11,7 @@ export default (sequelize: Sequelize) => {
         gender: DataTypes.STRING,
         image: DataTypes.STRING,
         uid: DataTypes.STRING,
-        isVerify: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false,
-        },
+        role: DataTypes.STRING,
     });
 
     return User;

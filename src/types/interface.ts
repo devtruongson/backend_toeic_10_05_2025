@@ -58,7 +58,7 @@ export interface UserAttributes {
     gender?: string;
     image?: string;
     uid?: string;
-    isVerify: boolean;
+    role: string;
     createdAt?: Date;
     updatedAt?: Date;
 }
