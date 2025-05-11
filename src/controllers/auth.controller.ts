@@ -21,9 +21,14 @@ class AuthController {
 
             const passwordHash = endCodePassword(req.body.password);
             const userCreate = await db.user.create({
-              email: 
-            })
-            
+                email: req.body.email,
+                password: passwordHash,
+                username: req.body.username,
+                role: db.ROLES[0],
+            });
+            const userSave = await userCreate.save();
+
+            return res.status(HttpStatusCode.Ok).json(sendResponse(HttpStatusCode.Ok, 'Thành công', userSave));
         } catch (error) {
             return res
                 .status(HttpStatusCode.BadGateway)

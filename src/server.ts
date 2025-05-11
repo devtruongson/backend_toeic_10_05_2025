@@ -4,6 +4,7 @@ import configComperssion from './configs/compression.config';
 import { startAndConnectDB } from './configs/connectDb.config';
 import configCors from './configs/cors.config';
 import configRequest from './configs/req.config';
+import initialAuthRoute from './routes/auth.routes';
 import initialUploadRoute from './routes/upload.routes';
 
 const app: Application = express();
@@ -19,6 +20,7 @@ startAndConnectDB();
 
 // router
 initialUploadRoute(app);
+initialAuthRoute(app);
 
 app.listen(PORT, () => {
     console.log('App Start Successfully With Port: ' + PORT);
