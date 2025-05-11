@@ -37,6 +37,21 @@ class UserController {
                 .json(sendResponse(HttpStatusCode.BadGateway, `${error}`, null));
         }
     }
+
+    async deleteUser(req: Request, res: Response) {
+        try {
+            const { id } = req.params;
+            const userDelete = await db.user.destroy({
+                where: { id }
+            });
+
+            return res.status(HttpStatusCode.Ok).json(sendResponse(HttpStatusCode.Ok, 'Delete User Success', userDelete));
+        } catch (error) {
+            return res
+                .status(HttpStatusCode.BadGateway)
+                .json(sendResponse(HttpStatusCode.BadGateway, `${error}`, null));
+        }
+    }
 }
 
 export default new UserController();
