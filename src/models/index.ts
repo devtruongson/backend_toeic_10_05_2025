@@ -1,5 +1,6 @@
 import { Sequelize } from 'sequelize';
 import dbConfig from '~/configs/db.config';
+import createBlogModel from './blog.model';
 import createExamModel from './exam.model';
 import createHistoryModel from './history.model';
 import createUserModel from './user.model';
@@ -18,6 +19,7 @@ interface DB {
     user: ReturnType<typeof createUserModel>;
     history: ReturnType<typeof createHistoryModel>;
     exam: ReturnType<typeof createExamModel>;
+    blog: ReturnType<typeof createBlogModel>;
     ROLES: string[];
 }
 
@@ -27,6 +29,7 @@ const db: DB = {
     user: createUserModel(sequelize),
     history: createHistoryModel(sequelize),
     exam: createExamModel(sequelize),
+    blog: createBlogModel(sequelize),
     ROLES: ['user', 'admin', 'moderator'],
 };
 

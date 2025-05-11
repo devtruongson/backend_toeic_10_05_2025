@@ -20,17 +20,22 @@ class UserController {
         try {
             const { id, password } = req.body;
             const passwordHash = endCodePassword(password);
-            console.log("check req.body: ", req.body);
+            console.log('check req.body: ', req.body);
 
-            const userUpdate = await db.user.update({
-                ...req.body,
-                username: req.body.username,
-                password: passwordHash,
-            }, {
-                where: { id }
-            });
+            const userUpdate = await db.user.update(
+                {
+                    ...req.body,
+                    username: req.body.username,
+                    password: passwordHash,
+                },
+                {
+                    where: { id },
+                },
+            );
 
-            return res.status(HttpStatusCode.Ok).json(sendResponse(HttpStatusCode.Ok, 'Update User Success', userUpdate));
+            return res
+                .status(HttpStatusCode.Ok)
+                .json(sendResponse(HttpStatusCode.Ok, 'Update User Success', userUpdate));
         } catch (error) {
             return res
                 .status(HttpStatusCode.BadGateway)
@@ -42,10 +47,12 @@ class UserController {
         try {
             const { id } = req.params;
             const userDelete = await db.user.destroy({
-                where: { id }
+                where: { id },
             });
 
-            return res.status(HttpStatusCode.Ok).json(sendResponse(HttpStatusCode.Ok, 'Delete User Success', userDelete));
+            return res
+                .status(HttpStatusCode.Ok)
+                .json(sendResponse(HttpStatusCode.Ok, 'Delete User Success', userDelete));
         } catch (error) {
             return res
                 .status(HttpStatusCode.BadGateway)

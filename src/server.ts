@@ -5,6 +5,9 @@ import { startAndConnectDB } from './configs/connectDb.config';
 import configCors from './configs/cors.config';
 import configRequest from './configs/req.config';
 import initialAuthRoute from './routes/auth.routes';
+import initialBlogRoute from './routes/blog.routes';
+import initialExamRoute from './routes/exam.routes';
+import initialHistoryRoute from './routes/history.routes';
 import initialUploadRoute from './routes/upload.routes';
 import initialUserRoute from './routes/user.routes';
 
@@ -23,6 +26,9 @@ startAndConnectDB();
 initialUploadRoute(app);
 initialAuthRoute(app);
 initialUserRoute(app);
+initialBlogRoute(app);
+initialExamRoute(app);
+initialHistoryRoute(app);
 
 app.listen(PORT, () => {
     console.log('App Start Successfully With Port: ' + PORT);
