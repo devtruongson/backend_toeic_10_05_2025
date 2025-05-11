@@ -2,10 +2,10 @@ import { Model } from 'sequelize';
 
 export interface ExamAttributes {
     id?: number;
-    Name: string;
+    title: string;
     description: string;
-    ltype: string;
     type: string;
+    questions: string;
     createdAt?: Date;
     updatedAt?: Date;
 }
@@ -16,7 +16,7 @@ export interface HistoryAttributes {
     id?: number;
     userId: number;
     examId: number;
-    answers?: string;
+    questions?: string;
     score?: string;
     time?: number;
     created_at?: Date;

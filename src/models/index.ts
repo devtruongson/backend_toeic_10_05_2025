@@ -2,7 +2,6 @@ import { Sequelize } from 'sequelize';
 import dbConfig from '~/configs/db.config';
 import createExamModel from './exam.model';
 import createHistoryModel from './history.model';
-import createQuestionModel from './question.model';
 import createRoleModel from './role.model';
 import createUserModel from './user.model';
 
@@ -19,7 +18,6 @@ interface DB {
     sequelize: Sequelize;
     user: ReturnType<typeof createUserModel>;
     role: ReturnType<typeof createRoleModel>;
-    question: ReturnType<typeof createQuestionModel>;
     history: ReturnType<typeof createHistoryModel>;
     exam: ReturnType<typeof createExamModel>;
     ROLES: string[];
@@ -30,7 +28,6 @@ const db: DB = {
     sequelize,
     user: createUserModel(sequelize),
     role: createRoleModel(sequelize),
-    question: createQuestionModel(sequelize),
     history: createHistoryModel(sequelize),
     exam: createExamModel(sequelize),
     ROLES: ['user', 'admin', 'moderator'],
@@ -40,10 +37,6 @@ const db: DB = {
 // User-Role (Many-to-Many)
 db.user.belongsToMany(db.role, { through: 'user_roles' });
 db.role.belongsToMany(db.user, { through: 'user_roles' });
-
-// Question-Exam (One-to-Many)
-db.exam.hasMany(db.question, { foreignKey: 'parentId' });
-db.question.belongsTo(db.exam, { foreignKey: 'parentId' });
 
 // History-User/Exam (Many-to-One)
 db.history.belongsTo(db.user, { foreignKey: 'userId' });

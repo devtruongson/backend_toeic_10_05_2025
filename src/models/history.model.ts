@@ -13,7 +13,7 @@ export default (sequelize: Sequelize) => {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
-            answers: {
+            questions: {
                 type: DataTypes.JSON,
             },
             score: {
