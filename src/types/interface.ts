@@ -16,6 +16,7 @@ export interface BlogAttributes {
     id?: number;
     title: string;
     content: string;
+    thumbnail: string;
     createdAt?: Date;
     updatedAt?: Date;
 }

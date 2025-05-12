@@ -5,6 +5,7 @@ export default (sequelize: Sequelize) => {
     const Blog = sequelize.define<BlogInstance>('Blog', {
         title: DataTypes.STRING,
         content: DataTypes.STRING,
+        thumbnail: DataTypes.STRING,
     });
 
     return Blog;
