@@ -34,8 +34,8 @@ class BlogController {
 
     async createBlog(req: Request, res: Response) {
         try {
-            const { title, content } = req.body;
-            const blog = await db.blog.create({ title, content });
+            const { title, content, thumbnail } = req.body;
+            const blog = await db.blog.create({ title, content, thumbnail });
             return res.status(HttpStatusCode.Ok).json(sendResponse(HttpStatusCode.Ok, 'Create Blog Success', blog));
         } catch (error) {
             return res
@@ -47,8 +47,8 @@ class BlogController {
     async updateBlog(req: Request, res: Response) {
         try {
             const { id } = req.params;
-            const { title, content } = req.body;
-            const blog = await db.blog.update({ title, content }, { where: { id } });
+            const { title, content, thumbnail } = req.body;
+            const blog = await db.blog.update({ title, content, thumbnail }, { where: { id } });
             return res.status(HttpStatusCode.Ok).json(sendResponse(HttpStatusCode.Ok, 'Update Blog Success', blog));
         } catch (error) {
             return res
