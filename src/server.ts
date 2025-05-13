@@ -10,6 +10,8 @@ import initialExamRoute from './routes/exam.routes';
 import initialHistoryRoute from './routes/history.routes';
 import initialUploadRoute from './routes/upload.routes';
 import initialUserRoute from './routes/user.routes';
+import initialCategoryRoute from './routes/category.routes';
+import initialVocabularyRoute from './routes/vocabulary.routes';
 
 const app: Application = express();
 const PORT: number = parseInt(process.env.PORT || '8080');
@@ -29,6 +31,8 @@ initialUserRoute(app);
 initialBlogRoute(app);
 initialExamRoute(app);
 initialHistoryRoute(app);
+initialCategoryRoute(app);
+initialVocabularyRoute(app);
 
 app.listen(PORT, () => {
     console.log('App Start Successfully With Port: ' + PORT);

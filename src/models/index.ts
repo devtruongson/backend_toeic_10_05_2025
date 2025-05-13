@@ -4,6 +4,8 @@ import createBlogModel from './blog.model';
 import createExamModel from './exam.model';
 import createHistoryModel from './history.model';
 import createUserModel from './user.model';
+import createCategoryModel from './category.model';
+import createVocabularyModel from './vocabulary.model';
 
 // Create Sequelize instance
 const sequelize = new Sequelize(dbConfig.DB_NAME, dbConfig.USER_NAME, dbConfig.PASSWORD, {
@@ -20,6 +22,8 @@ interface DB {
     history: ReturnType<typeof createHistoryModel>;
     exam: ReturnType<typeof createExamModel>;
     blog: ReturnType<typeof createBlogModel>;
+    category: ReturnType<typeof createCategoryModel>;
+    vocabulary: ReturnType<typeof createVocabularyModel>;
     ROLES: string[];
 }
 
@@ -30,6 +34,8 @@ const db: DB = {
     history: createHistoryModel(sequelize),
     exam: createExamModel(sequelize),
     blog: createBlogModel(sequelize),
+    category: createCategoryModel(sequelize),
+    vocabulary: createVocabularyModel(sequelize),
     ROLES: ['user', 'admin', 'moderator'],
 };
 

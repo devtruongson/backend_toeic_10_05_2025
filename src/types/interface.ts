@@ -74,3 +74,24 @@ export interface UserAttributes {
 }
 
 export interface UserInstance extends Model<UserAttributes>, UserAttributes {}
+
+export interface CategoryAttributes {
+    id?: number;
+    title: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+}
+
+export interface CategoryInstance extends Model<CategoryAttributes>, CategoryAttributes {}
+
+export interface VocabularyAttributes {
+    id?: number;
+    word: string;
+    definition: string;
+    example: string;
+    categoryId: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+}
+
+export interface VocabularyInstance extends Model<VocabularyAttributes>, VocabularyAttributes {}
