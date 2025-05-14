@@ -20,7 +20,6 @@ class UserController {
         try {
             const { id, password } = req.body;
             const passwordHash = endCodePassword(password);
-            console.log('check req.body: ', req.body);
 
             const userUpdate = await db.user.update(
                 {

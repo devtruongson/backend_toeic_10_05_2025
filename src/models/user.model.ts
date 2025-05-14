@@ -10,6 +10,7 @@ export default (sequelize: Sequelize) => {
         gender: DataTypes.STRING,
         image: DataTypes.STRING,
         uid: DataTypes.STRING,
+        name: DataTypes.STRING,
         role: DataTypes.STRING,
     });
 

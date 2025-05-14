@@ -69,6 +69,7 @@ export interface UserAttributes {
     image?: string;
     uid?: string;
     role: string;
+    name: string;
     createdAt?: Date;
     updatedAt?: Date;
 }
