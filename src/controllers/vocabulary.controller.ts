@@ -23,8 +23,15 @@ class VocabularyController {
 
     async getAllVocabulary(req: Request, res: Response) {
         try {
-            const vocabularise = await db.vocabulary.findAll();
-            return res.status(HttpStatusCode.Ok).json(sendResponse(HttpStatusCode.Ok, 'List vocabulary', vocabularise));
+            const { categoryId } = req.query;
+
+            const whereCondition = categoryId ? { categoryId: Number(categoryId) } : undefined;
+
+            const vocabularies = await db.vocabulary.findAll({
+                where: whereCondition,
+            });
+
+            return res.status(HttpStatusCode.Ok).json(sendResponse(HttpStatusCode.Ok, 'List vocabulary', vocabularies));
         } catch (error) {
             return res
                 .status(HttpStatusCode.BadGateway)
