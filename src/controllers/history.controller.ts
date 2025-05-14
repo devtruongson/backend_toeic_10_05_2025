@@ -52,19 +52,18 @@ class HistoryController {
 
     async createHistory(req: Request, res: Response) {
         try {
-            const { userId, examId, questions, score, time } = req.body;
+            const { userId, examId, questions, time } = req.body;
             let count = 0;
             (questions || []).forEach((item: { answers: any[] }) => {
-                if (item.answers.find((ans) => ans.isCorect === ans.isChoose)) {
+                if (item.answers.find((ans) => ans.isCorect && ans.isChoose)) {
                     count = count + 1;
                 }
             });
-            const result = `${count}/${questions.length}`;
             const history = await db.history.create({
                 userId,
                 examId,
                 questions,
-                score: result,
+                score: String(count * 5),
                 time,
             });
             return res
