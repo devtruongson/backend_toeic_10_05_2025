@@ -25,11 +25,11 @@ class VocabularyController {
         try {
             const { categoryId } = req.query;
 
-            const whereCondition = categoryId ? { categoryId: Number(categoryId) } : undefined;
-
-            const vocabularies = await db.vocabulary.findAll({
-                where: whereCondition,
-            });
+            const query: any = {};
+            if (categoryId && !isNaN(Number(categoryId))) {
+                query.where = { categoryId: Number(categoryId) };
+            }
+            const vocabularies = await db.vocabulary.findAll(query);
 
             return res.status(HttpStatusCode.Ok).json(sendResponse(HttpStatusCode.Ok, 'List vocabulary', vocabularies));
         } catch (error) {
