@@ -74,6 +74,25 @@ class VocabularyController {
                 .json(sendResponse(HttpStatusCode.BadGateway, `${error}`, null));
         }
     }
+
+    async getVocabularyByCategoryId(req: Request, res: Response) {
+        try {
+            const { id } = req.params;
+            const vocabulary = await db.vocabulary.findAll({
+                where: { categoryId: id },
+            });
+            if (!vocabulary) {
+                return res
+                    .status(HttpStatusCode.NotFound)
+                    .json(sendResponse(HttpStatusCode.NotFound, 'vocabulary Not Found', null));
+            }
+            return res.status(HttpStatusCode.Ok).json(sendResponse(HttpStatusCode.Ok, 'vocabulary', vocabulary));
+        } catch (error) {
+            return res
+                .status(HttpStatusCode.BadGateway)
+                .json(sendResponse(HttpStatusCode.BadGateway, `${error}`, null));
+        }
+    }
 }
 
 export default new VocabularyController();

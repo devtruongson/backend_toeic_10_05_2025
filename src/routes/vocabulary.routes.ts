@@ -10,6 +10,7 @@ export default function initialVocabularyRoute(app: Application) {
     route.post('/', vocabularyController.createVocabulary);
     route.put('/:id', vocabularyController.updateVocabulary);
     route.delete('/:id', vocabularyController.deleteVocabulary);
+    route.get('/category/:id', vocabularyController.getVocabularyByCategoryId);
 
     app.use('/api/v1/vocabulary', route);
 }

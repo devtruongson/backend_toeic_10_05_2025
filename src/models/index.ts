@@ -46,4 +46,7 @@ db.history.belongsTo(db.exam, { foreignKey: 'examId' });
 db.user.hasMany(db.history, { foreignKey: 'userId' });
 db.exam.hasMany(db.history, { foreignKey: 'examId' });
 
+db.category.hasMany(db.vocabulary, { foreignKey: 'categoryId' });
+db.vocabulary.belongsTo(db.category, { foreignKey: 'categoryId' });
+
 export default db;
