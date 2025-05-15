@@ -18,14 +18,15 @@ class UserController {
 
     async updateUser(req: Request, res: Response) {
         try {
-            const { id, password } = req.body;
-            const passwordHash = endCodePassword(password);
+            const { id } = req.body;
+            // const passwordHash = endCodePassword(password);
+            // console.log('check req.body: ', req.body);
 
             const userUpdate = await db.user.update(
                 {
                     ...req.body,
                     username: req.body.username,
-                    password: passwordHash,
+                    // password: passwordHash,
                 },
                 {
                     where: { id },
